@@ -28,7 +28,7 @@ const Dock = () => {
           y: -15 * intensity,
           duration: 0.2,
           ease: 'power1.out',
-        })
+        });
       });
     };
 
@@ -90,4 +90,4 @@ const Dock = () => {
     </section>
   )
 }
-export default Dock
+export default Dock;
