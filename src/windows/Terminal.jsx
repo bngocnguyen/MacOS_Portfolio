@@ -1,13 +1,13 @@
 ﻿import WindowWrapper from "#hoc/WindowWrapper.jsx";
-import {techStack} from "#constants/index.js";
-import {Check, Flag} from "lucide-react";
-import {WindowControls} from "#components/index.js";
+import { techStack } from "#constants/index.js";
+import { Check, Flag } from "lucide-react";
+import { WindowControls } from "#components/index.js";
 
 const Terminal = () => {
   return (
     <>
       <div id="window-header">
-        <WindowControls target="terminal"/>
+        <WindowControls target="terminal" />
         <h2>Tech Stack</h2>
       </div>
 
@@ -23,9 +23,9 @@ const Terminal = () => {
         </div>
 
         <ul className="content">
-          {techStack.map(({category, items}) => (
+          {techStack.map(({ category, items }) => (
             <li key={category} className="flex items-center">
-              <Check className="check" size={20}/>
+              <Check className="check" size={20} />
               <h3>{category}</h3>
               <ul>
                 {items.map((item, i) => (
@@ -41,11 +41,11 @@ const Terminal = () => {
 
         <div className="footnote">
           <p>
-            <Check size={20}/> {techStack.length} of {techStack.length} stacks loaded successfully (100%)
+            <Check size={20} /> {techStack.length} of {techStack.length} stacks loaded successfully (100%)
           </p>
 
           <p className="text-black">
-            <Flag size={15} fill="black"/>
+            <Flag size={15} fill="black" />
             Render time: 69ms
           </p>
         </div>
