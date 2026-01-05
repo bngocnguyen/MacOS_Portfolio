@@ -10,5 +10,6 @@ const WindowControls = ({ target }) => {
       <div className="maximize" />
     </div>
   );
-}
-export default WindowControls
+};
+
+export default WindowControls;

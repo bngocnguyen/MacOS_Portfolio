@@ -1,13 +1,13 @@
 ﻿import useWindowStore from "#store/window.js";
-import {useLayoutEffect, useRef} from "react";
-import {useGSAP} from "@gsap/react";
-import {Draggable} from "gsap/Draggable";
+import { useLayoutEffect, useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { Draggable } from "gsap/Draggable";
 import gsap from "gsap";
 
 const WindowWrapper = (Component, windowkey) => {
   const Wrapped = (props) => {
-    const {focusWindow, windows} = useWindowStore();
-    const {isOpen, zIndex} = windows[windowkey];
+    const { focusWindow, windows } = useWindowStore();
+    const { isOpen, zIndex } = windows[windowkey];
     const ref = useRef(null);
 
     useGSAP(() => {
@@ -18,16 +18,16 @@ const WindowWrapper = (Component, windowkey) => {
 
       gsap.fromTo(
         el,
-        {scale: 0.8, opacity: 0, y: 40},
-        {scale: 1, opacity: 1, y: 0, duration: 0.4, ease: "power3.out"},
+        { scale: 0.8, opacity: 0, y: 40 },
+        { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: "power3.out" },
       );
-    }, [isOpen]);
+    }, [ isOpen ]);
 
     useGSAP(() => {
       const el = ref.current;
       if (!el) return;
 
-      const [instance] = Draggable.create(el, {onPress: () => focusWindow(windowkey)});
+      const [ instance ] = Draggable.create(el, { onPress: () => focusWindow(windowkey) });
 
       return () => instance.kill();
     }, []);
@@ -36,21 +36,21 @@ const WindowWrapper = (Component, windowkey) => {
       const el = ref.current;
       if (!el) return;
       el.style.display = isOpen ? "block" : "none";
-    }, [isOpen]);
+    }, [ isOpen ]);
 
     return (
       <section
         id={windowkey}
         ref={ref}
-        style={{zIndex}}
+        style={{ zIndex }}
         className="absolute"
       >
-        <Component {...props}/>
+        <Component {...props} />
       </section>);
   };
 
   Wrapped.displayName = `WindowWrapper(${Component.displayName || Component.name || 'Component'})`;
 
   return Wrapped;
-}
-export default WindowWrapper
+};
+export default WindowWrapper;

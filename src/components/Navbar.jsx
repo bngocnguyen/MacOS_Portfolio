@@ -30,5 +30,5 @@ const Navbar = () => {
       <time>{dayjs().format('ddd MMM D h:mm A')}</time>
     </div>
   </nav>)
-}
-export default Navbar
+};
+export default Navbar;
